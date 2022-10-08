@@ -15,14 +15,13 @@ else:
 
 def set_safe(ipaddr, is_safe):
 	'''Stores the safety of the IP in redis'''
-	logger.debug([str(is_safe), int(is_safe)])
-	r.setex(ipaddr, timedelta(seconds=10), is_safe)
+	r.setex(ipaddr, timedelta(seconds=10), int(is_safe))
 	return(is_safe)
 
 def get_safe(ipaddr):
 	is_safe = r.get(ipaddr)
 	logger.debug(is_safe)
-	return(is_safe)
+	return(bool(is_safe))
 
 def is_ip_safe(ipaddr):
 	'''Returns False if the IP is not false
