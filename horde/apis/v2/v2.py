@@ -292,7 +292,7 @@ class JobPop(Resource):
                     raise e.UnsafeIP(self.worker_ip)
         if not self.worker:
             if is_profane(self.args['name']):
-                raise e.Profanity(self.user.get_unique_alias(), 'worker name', self.args['name'])
+                raise e.Profanity(self.user.get_unique_alias(), self.args['name'], 'worker name')
             worker_count = self.user.count_workers()
             if invite_only.active and worker_count >= self.user.worker_invited:
                 raise e.WorkerInviteOnly(worker_count)
