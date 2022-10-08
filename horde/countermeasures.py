@@ -20,7 +20,6 @@ def set_safe(ipaddr, is_safe):
 
 def get_safe(ipaddr):
 	is_safe = r.get(ipaddr)
-	logger.debug(is_safe)
 	if is_safe == None:
 		return(is_safe)
 	return(bool(is_safe))
@@ -42,8 +41,12 @@ def is_ip_safe(ipaddr):
 	# if is_safe == None:
 	if True:
 		result = requests.get(os.getenv("IP_CHECKER").format(ipaddr = ipaddr), timeout=timeout)
-		probability = float(result.content)
 		if not result.ok:
+			if result.status_code == 429:
+				# If we exceeded the amount of requests we can do to the IP checker, we ask the client to try again later.
+				return(None)
+			else:
+				probability = float(result.content)
 			if probability == int(os.getenv("IP_CHECKER_LC")):
 				is_safe = set_safe(ipaddr,True)
 			else:

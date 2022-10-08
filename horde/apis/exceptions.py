@@ -89,6 +89,11 @@ class UnsafeIP(wze.Forbidden):
         self.specific = f"Due to abuse prevention, we cannot accept workers from your IP address. Please contact us on Discord if you feel this is a mistake."
         self.log = f"Worker attempted to pop from unsafe IP: {ipaddr}"
 
+class TooManyNewIPs(wze.Forbidden):
+    def __init__(self, ipaddr):
+        self.specific = f"We are getting too many new workers from unknown IPs. To prevent abuse, please try again later. If this persists, please contact us on discord https://discord.gg/3DxrhksKzn "
+        self.log = f"Too many new IPs to check: {ipaddr}. Asked to retry"
+
 class InvalidProcGen(wze.NotFound):
     def __init__(self, gen_id):
         self.specific = f"Processing Generation with ID {gen_id} does not exist."
