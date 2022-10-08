@@ -5,7 +5,8 @@ from .redis_ctrl import is_redis_up, ger_limiter_url
 
 limiter = None
 # Very basic DOS prevention
-if is_redis_up():
+if False:
+# if is_redis_up():
     try:
         limiter = Limiter(
             HORDE,
