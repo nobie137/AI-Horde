@@ -3,9 +3,10 @@ from . import logger, args
 from .redis_ctrl import is_redis_up, get_ipaddr_db
 
 r = None
+logger.init("IP Address Cache", status="Connecting")
 if is_redis_up():
 	r = get_ipaddr_db()
-	logger.init("IP Address Cache", status="Connected")
+	logger.init_ok("IP Address Cache", status="Connected")
 else:
 	logger.init_error("IP Address Cache", status="Failed")
 
