@@ -37,8 +37,7 @@ def is_ip_safe(ipaddr):
 	safety_threshold=0.99
 	timeout=2.00
 	is_safe = get_safe(ipaddr)
-	# if is_safe == None:
-	if True:
+	if is_safe == None:
 		result = requests.get(os.getenv("IP_CHECKER").format(ipaddr = ipaddr), timeout=timeout)
 		if not result.ok:
 			if result.status_code == 429:
