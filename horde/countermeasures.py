@@ -15,7 +15,13 @@ else:
 
 def set_safe(ipaddr, is_safe):
 	'''Stores the safety of the IP in redis'''
+	logger.debug([str(is_safe), int(is_safe)])
 	r.setex(ipaddr, timedelta(seconds=10), is_safe)
+	return(is_safe)
+
+def get_safe(ipaddr):
+	is_safe = r.get(ipaddr)
+	logger.debug(is_safe)
 	return(is_safe)
 
 def is_ip_safe(ipaddr):
@@ -30,8 +36,9 @@ def is_ip_safe(ipaddr):
 		return(True)
 	safety_threshold=0.99
 	timeout=2.00
-	is_safe = r.get(ipaddr)
+	is_safe = get_safe(ipaddr)
 	logger.debug(is_safe)
+	return(True)
 	if is_safe == None:
 		result = requests.get(os.getenv("IP_CHECKER").format(ipaddr = ipaddr), timeout=timeout)
 		probability = float(result.content)
