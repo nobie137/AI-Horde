@@ -51,7 +51,6 @@ def is_ip_safe(ipaddr):
 		else:
 			is_safe = set_safe(ipaddr, probability < safety_threshold)
 		logger.debug(f"IP {ipaddr} has a probability of {probability}. Safe = {is_safe}")
-	return(False)
 	return(is_safe)
 
 
