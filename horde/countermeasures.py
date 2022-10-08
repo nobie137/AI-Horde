@@ -8,7 +8,7 @@ if is_redis_up():
 	r = get_ipaddr_db()
 	logger.init_ok("IP Address Cache", status="Connected")
 else:
-	logger.init_error("IP Address Cache", status="Failed")
+	logger.init_err("IP Address Cache", status="Failed")
 
 # Returns False if the IP is not false
 # Else return true
