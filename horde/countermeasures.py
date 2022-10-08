@@ -53,6 +53,7 @@ def is_ip_safe(ipaddr):
 				is_safe = set_safe(ipaddr,False)
 				logger.error(f"An error occured while validating IP. Return Code: {result.text}")
 		else:
+			probability = float(result.content)
 			is_safe = set_safe(ipaddr, probability < safety_threshold)
 		logger.debug(f"IP {ipaddr} has a probability of {probability}. Safe = {is_safe}")
 	return(is_safe)
