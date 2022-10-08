@@ -86,7 +86,7 @@ class WorkerInviteOnly(wze.Forbidden):
 
 class UnsafeIP(wze.Forbidden):
     def __init__(self, ipaddr):
-        self.specific = f"Due to abuse prevention, we cannot accept workers from your IP address. Please contact us on Discord if you feel this is a mistake."
+        self.specific = f"Due to abuse prevention, we cannot accept more workers from your IP address. Please contact us on Discord if you feel this is a mistake."
         self.log = f"Worker attempted to pop from unsafe IP: {ipaddr}"
 
 class TooManyNewIPs(wze.Forbidden):
