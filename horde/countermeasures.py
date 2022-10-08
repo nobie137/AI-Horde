@@ -39,7 +39,8 @@ def is_ip_safe(ipaddr):
 	timeout=2.00
 	is_safe = get_safe(ipaddr)
 	logger.debug(is_safe)
-	if is_safe == None:
+	# if is_safe == None:
+	if True:
 		result = requests.get(os.getenv("IP_CHECKER").format(ipaddr = ipaddr), timeout=timeout)
 		probability = float(result.content)
 		if not result.ok:
