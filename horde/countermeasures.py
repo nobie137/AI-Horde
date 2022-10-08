@@ -5,6 +5,7 @@ from .redis_ctrl import is_redis_up, get_ipaddr_db
 r = None
 if is_redis_up():
 	r = get_ipaddr_db()
+	logger.init("IP Address Cache", status="Connected")
 
 # Returns False if the IP is not false
 # Else return true
