@@ -12,7 +12,7 @@ For more questions, check the [FAQ](FAQ.md)
 
 # Registering
 
-To use the horde you need to have a registered amount, or use anonymous mode.
+To use the horde you need to have a registered account, or use anonymous mode.
 
 To register an account, go to the Horde you want to use:
    * [Stable Horde Registration](https://stablehorde.net/register)
